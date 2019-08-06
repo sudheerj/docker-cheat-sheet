@@ -4,10 +4,13 @@ Quick reference guide for Docker commands
 
 ### Table of Contents
 -------------------------------------------------------------------
-1. What is docker?
-2. Why docker?
-3. Installation
-4. Registries and Repositories
-5. Start and stop containers
-6. Cleanup commands
-7. Utility commands
+* [**What is docker?**](#what-is-docker)?
+* [**Why docker?**](#why-docker)
+* [**Installation**](#installation)
+* [**Registries and Repositories**](#registries-and-repositories)
+* [**Start and stop containers**](#start-and-stop-containers)
+* [**Cleanup commands**](#cleanup-commands)
+* [**Utility commands**](#utility-commands)
+
+### What is docker?
+   Docker is a tool designed to make it easier to create, deploy, and run applications by using containers.

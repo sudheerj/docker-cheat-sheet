@@ -10,9 +10,10 @@ Quick reference guide for Docker commands
 |2  | [**Why docker?**](#why-docker)|
 |3  | [**Installation**](#installation) |
 |4  | [**Registries and Repositories**](#registries-and-repositories)|
-|5  | [**Start and stop containers**](#start-and-stop-containers) |
-|6  | [**Cleanup commands**](#cleanup-commands)|
-|7  | [**Utility commands**](#utility-commands)|
+|5  | [**Create,Run,Update and Delete containers**](#)|
+|6  | [**Start and stop containers**](#start-and-stop-containers) |
+|7  | [**Cleanup commands**](#cleanup-commands)|
+|8  | [**Utility commands**](#utility-commands)|
 
 ### What is docker?
    Docker is a tool designed to make it easier to create, deploy, and run applications by using containers.
@@ -52,7 +53,7 @@ Login to a registry
 
 Example:
 
-1. docker login localhost:8080
+1. docker login localhost:8080 // Login to a registry on your localhost
 2. docker login
 ```
 
@@ -63,7 +64,7 @@ Logout from a registry
 
 Example:
 
-docker logout localhost:8080
+docker logout localhost:8080 // Logout from a registry on your localhost
 ```
 
 #### Search image
@@ -96,8 +97,93 @@ docker image push golang:latest
 
   **[⬆ Back to Top](#table-of-contents)**
 
+### Create,Run,Update and Delete containers
+
+#### Remove
+Remove one or more containers
+
+```cmd
+docker container rm [OPTIONS] CONTAINER [CONTAINER...]
+
+Example:
+docker container rm golang
+docker rm $(docker ps -q -f status=exited) // Remove all the stopped containers
+```
+  **[⬆ Back to Top](#table-of-contents)**
 ### Start and stop containers
 
+#### Start
+Start one or more stopped containers
+
+```cmd
+docker container start [OPTIONS] CONTAINER [CONTAINER...]
+
+Example:
+docker container start golang
+```
+
+### Stop
+Stop one or more running containers
+
+
+```cmd
+docker container stop [OPTIONS] CONTAINER [CONTAINER...]
+
+Example:
+docker container stop golang
+docker stop $(docker ps -a -q) // To stop all the containers
+```
+
+#### Restart
+Restart one or more containers and processes running inside the container/containers.
+
+```cmd
+docker container restart [OPTIONS] CONTAINER [CONTAINER...]
+
+Example:
+docker container restart golang
+```
+
+#### Pause
+Pause all processes within one or more containers
+
+```cmd
+docker container pause CONTAINER [CONTAINER...]
+
+Example:
+docker container pause golang
+```
+
+### Unpause/Resume
+Unpause all processes within one or more containers
+
+```cmd
+docker container unpause CONTAINER [CONTAINER...]
+
+Example:
+docker container unpause golang
+```
+
+#### Kill
+Kill one or more running containers
+
+```cmd
+docker container kill [OPTIONS] CONTAINER [CONTAINER...]
+
+Example:
+docker container kill golang
+```
+
+#### Wait
+Block until one or more containers stop and print their exit codes after that
+
+
+```cmd
+docker container wait CONTAINER [CONTAINER...]
+
+Example:
+docker container wait golang
+```
   **[⬆ Back to Top](#table-of-contents)**
 
 ### Cleanup commands

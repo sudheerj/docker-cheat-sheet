@@ -14,6 +14,7 @@ Quick reference guide for Docker commands
 |6  | [**Start and stop containers**](#start-and-stop-containers) |
 |7  | [**Cleanup commands**](#cleanup-commands)|
 |8  | [**Utility commands**](#utility-commands)|
+|9  | [**Docker Hub**](#docker-hub)|
 
 ### What is docker?
    Docker is a tool designed to make it easier to create, deploy, and run applications by using containers.
@@ -21,10 +22,40 @@ Quick reference guide for Docker commands
    **[⬆ Back to Top](#table-of-contents)**
 
 ### Why docker?
+   Docker is useful to automate the deployment of applications inside a software containers, which makes the applications easy to ship and run virtually anywhere (i.e, platform independent). The Docker container processes run on the host kernel, unlike VM which runs processes in guest kernel.
+
+   ![dockervsvm](images/dockervsvm.jpg)
 
    **[⬆ Back to Top](#table-of-contents)**
 
 ### Installation?
+The docker desktop downloads are available for windows, mac and linux distributions.
+
+#### Windows
+It supports for Windows 10 64-bit: Pro, Enterprise, or Education (Build 15063 or later) editions. You need to follow the below steps for installation.
+
+1. Download docker desktop for windows from https://docs.docker.com/docker-for-windows/install/
+2. Double-click `Docker Desktop Installer.exe` to run the installer.
+3. Make sure `Enable Hyper-V Windows Features` option is selected
+
+#### Mac
+
+1. Download docker desktop for mac from https://docs.docker.com/docker-for-mac/install/
+2. Double-click `Docker.dmg` to open the installer and drag it to the Applications folder.
+3. Double-click `Docker.app` in the Applications folder to start Docker.
+
+#### Linux
+
+You can install from a package easily
+1. Go to https://download.docker.com/linux/ubuntu/dists/, choose your Ubuntu version and then go to pool/stable/ to get .deb file
+2. Install Docker Engine by referring the downloaded location of the Docker package.
+```cmd
+$ sudo dpkg -i /path/to/package.deb
+```
+3. Verify the Docker Engine by running the `hello-world` image to check correct installation.
+```cmd
+$ sudo docker run hello-world
+```
 
    **[⬆ Back to Top](#table-of-contents)**
 
@@ -98,6 +129,54 @@ docker image push golang:latest
   **[⬆ Back to Top](#table-of-contents)**
 
 ### Create,Run,Update and Delete containers
+
+#### Create
+Create a new container
+```cmd
+docker container create [OPTIONS] IMAGE [COMMAND] [ARG...]
+
+Example:
+docker container create -t -i sudheerj/golang --name golang
+```
+
+#### Rename
+
+Rename a container
+
+```cmd
+docker container rename CONTAINER NEW_NAME
+
+Example:
+docker container rename golang golanguage
+docker container rename golanguage golang
+```
+
+#### Run
+
+```cmd
+docker container run [OPTIONS] IMAGE [COMMAND] [ARG...]
+
+Example:
+docker container run -it --name golang -d sudheerj/golang
+```
+
+You can also run a command inside container
+```cmd
+docker exec [OPTIONS] CONTAINER COMMAND [ARG...]
+
+Example:
+docker exec -it golang sh // Or use bash command if sh is failed
+```
+
+#### Update
+Update configuration of one or more containers
+
+```cmd
+docker container update [OPTIONS] CONTAINER [CONTAINER...]
+
+Example:
+docker container update --memory "1g" --cpuset-cpu "1" golang // update the golang to use 1g of memory and only use cpu core 1
+```
 
 #### Remove
 Remove one or more containers
@@ -193,3 +272,6 @@ docker container wait golang
 ### Utility commands
 
   **[⬆ Back to Top](#table-of-contents)**
+
+### Docker Hub
+   Docker Hub is a cloud-based repository provided by Docker to test, store and distribute container images which can be accessed either privately or publicly.

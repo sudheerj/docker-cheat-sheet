@@ -12,9 +12,13 @@ Quick reference guide for Docker commands
 |4  | [**Registries and Repositories**](#registries-and-repositories)|
 |5  | [**Create,Run,Update and Delete containers**](#)|
 |6  | [**Start and stop containers**](#start-and-stop-containers) |
-|7  | [**Cleanup commands**](#cleanup-commands)|
-|8  | [**Utility commands**](#utility-commands)|
-|9  | [**Docker Hub**](#docker-hub)|
+|7  | [**Networks**](#networks)|
+|8  | [**Cleanup commands**](#cleanup-commands)|
+|9  | [**Utility commands**](#utility-commands)|
+|10 | [**Docker Hub**](#docker-hub)|
+|11 | [**Dockerfile**](#dockerfile)|
+|12 | [**Docker Compose**](#docker-compose)|
+|13 | [**Docker Swarm**](#docker-swarm)|
 
 ### What is docker?
    Docker is a tool designed to make it easier to create, deploy, and run applications by using containers.
@@ -265,6 +269,8 @@ docker container wait golang
 ```
   **[⬆ Back to Top](#table-of-contents)**
 
+### Networks
+
 ### Cleanup commands
 
   **[⬆ Back to Top](#table-of-contents)**
@@ -275,3 +281,11 @@ docker container wait golang
 
 ### Docker Hub
    Docker Hub is a cloud-based repository provided by Docker to test, store and distribute container images which can be accessed either privately or publicly.
+
+### Dockerfile
+   Dockerfile is a text document that contains set of commands and instructions which will be executed in a sequence in the docker environment for building a new docker image.
+### Docker Compose
+   Docker compose(or compose) is a tool for defining and running multi-container Docker applications.
+### Docker Swarm
+   Docker Swarm(or swarm) is an open-source tool used to cluster and orchestrate Docker containers.
+

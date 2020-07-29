@@ -2,6 +2,10 @@
 Quick reference guide for Docker commands
 > Click :star:if you like the project. Pull Requests are highly appreciated. Follow me [@SudheerJonna](https://twitter.com/SudheerJonna) for technical updates.
 
+## Downloading PDF/Epub formats
+
+You can download the PDF and Epub version of this repository from the latest run on the [actions tab](https://github.com/sudheerj/docker-cheat-sheet/actions).
+
 ### Table of Contents
 
 | No. | Questions |
@@ -32,7 +36,7 @@ Quick reference guide for Docker commands
 
    **[⬆ Back to Top](#table-of-contents)**
 
-### Installation?
+### Installation
 The docker desktop downloads are available for windows, mac and linux distributions.
 
 #### Windows
@@ -270,6 +274,44 @@ docker container wait golang
   **[⬆ Back to Top](#table-of-contents)**
 
 ### Networks
+   Docker provides network commands connect containers to each other and to other non-Docker workloads. The usage of network commands would be `docker network COMMAND`
+
+#### List networks
+List down available networks
+
+```cmd
+docker network ls
+```
+
+#### Connect a container to network
+You can connect a container by name or by ID to any network. Once it connected, the container can communicate with other containers in the same network.
+
+```cmd
+docker network connect [OPTIONS] NETWORK CONTAINER
+
+Example:
+docker network connect multi-host-network container1
+```
+
+#### Disconnect a container from a network
+You can disconnect a container by name or by ID from any network.
+
+```cmd
+docker network disconnect [OPTIONS] NETWORK CONTAINER
+
+Example:
+docker network disconnect multi-host-network container1
+```
+
+#### Remove one or more networks
+Removes one or more networks by name or identifier. Remember, you must first disconnect any containers connected to it before removing it.
+
+```cmd
+docker network rm NETWORK [NETWORK...]
+
+Example:
+docker network rm my-network
+```
 
 ### Cleanup commands
 
@@ -281,6 +323,15 @@ docker container wait golang
 
 ### Docker Hub
    Docker Hub is a cloud-based repository provided by Docker to test, store and distribute container images which can be accessed either privately or publicly.
+
+#### From
+   It initializes a new image and sets the Base Image for subsequent instructions. It must be a first non-comment instruction in the Dockerfile.
+   ```cmd
+   FROM <image>
+   FROM <image>:<tag>
+   FROM <image>@<digest>
+   ```
+   **Note:** Both `tag` and `digest` are optional. If you omit either of them, the builder assumes a latest by default.
 
 ### Dockerfile
    Dockerfile is a text document that contains set of commands and instructions which will be executed in a sequence in the docker environment for building a new docker image.

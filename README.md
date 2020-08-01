@@ -313,6 +313,27 @@ Example:
 docker network rm my-network
 ```
 
+#### Create network
+It is possible to create a network in Docker before launching containers
+
+```cmd
+docker network create [OPTIONS] NETWORK
+
+Example:
+sudo docker network create –-driver bridge some_network
+```
+
+The above command will output the long ID for the new network.
+
+#### Inspect network
+You can see more details on the network associated with Docker using network inspect command.
+
+```cmd
+docker network inspect networkname
+
+Example:
+docker network inspect bridge
+```
 ### Cleanup commands
 
   **[⬆ Back to Top](#table-of-contents)**

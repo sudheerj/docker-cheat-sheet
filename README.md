@@ -336,6 +336,47 @@ docker network inspect bridge
 ```
 ### Cleanup commands
 
+You may need to cleanup resources (containers, volumes, images, networks) regularly.
+
+#### Remove all unused resources
+
+```cmd
+docker system prune
+```
+
+#### Images
+
+```cmd
+$ docker images
+$ docker rmi $(docker images --filter "dangling=true" -q --no-trunc)
+
+$ docker images | grep "none"
+$ docker rmi $(docker images | grep "none" | awk '/ / { print $3 }')
+```
+
+#### Containers
+
+```cmd
+$ docker ps
+$ docker ps -a
+$ docker rm $(docker ps -qa --no-trunc --filter "status=exited")
+```
+
+#### Volumes
+
+```cmd
+$ docker volume rm $(docker volume ls -qf dangling=true)
+$ docker volume ls -qf dangling=true | xargs -r docker volume rm
+```
+
+#### Networks
+
+```cmd
+$ docker network ls
+$ docker network ls | grep "bridge"
+$ docker network rm $(docker network ls | grep "bridge" | awk '/ / { print $1 }')
+```
+
   **[⬆ Back to Top](#table-of-contents)**
 
 ### Utility commands

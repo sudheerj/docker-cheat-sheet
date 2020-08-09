@@ -397,6 +397,37 @@ $ docker network rm $(docker network ls | grep "bridge" | awk '/ / { print $1 }'
 
 ### Dockerfile
    Dockerfile is a text document that contains set of commands and instructions which will be executed in a sequence in the docker environment for building a new docker image.
+
+#### FROM
+This command Sets the Base Image for subsequent instructions
+
+```cmd
+FROM <image>
+FROM <image>:<tag>
+FROM <image>@<digest>
+
+Example:
+FROM ubuntu:18.04
+```
+
+
+#### RUN
+
+#### ENTRYPOINT
+
+#### CMD
+
+#### COPY
+
+#### ADD
+
+#### ENV
+
+#### EXPOSE
+
+#### WORKDIR
+
+#### MAINTAINER
 ### Docker Compose
    Docker compose(or compose) is a tool for defining and running multi-container Docker applications.
 ### Docker Swarm

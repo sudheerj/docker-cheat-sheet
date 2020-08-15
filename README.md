@@ -410,8 +410,19 @@ Example:
 FROM ubuntu:18.04
 ```
 
-
 #### RUN
+
+RUN instruction allows you to install your application and packages required for it. It executes any commands on top of the current image and creates a new layer by committing the results. It is quite common to have multiple RUN instructions in a Dockerfile.
+
+It has two forms
+1. Shell Form: RUN <command>
+```cmd
+RUN npm start
+```
+2. Exec form RUN ["<executable>", "<param1>", "<param2>"]
+```cmd
+RUN [ "npm", "start" ]
+```
 
 #### ENTRYPOINT
 
@@ -422,10 +433,77 @@ FROM ubuntu:18.04
 #### ADD
 
 #### ENV
+The ENV instruction sets the environment variable <key> to the value <value>. It has two forms,
+
+1. The first form, `ENV <key> <value>`, will set a single variable to a value.
+2. The second form, `ENV <key>=<value> ...`, allows for multiple variables to be set at one time.
+
+```cmd
+ENV <key> <value>
+ENV <key>=<value> [<key>=<value> ...]
+
+Example:
+ENV name="John Doe" age=40
+ENV name John Doe
+ENV age 40
+```
 
 #### EXPOSE
+The EXPOSE instruction informs Docker that the container listens on the specified network ports at runtime. i.e, It helps in inter-container communication. You can specify whether the port listens on TCP or UDP, and the default is TCP.
+
+```cmd
+EXPOSE <port> [<port>/<protocol>...]
+
+Example:
+EXPOSE 80/udp
+EXPOSE 80/tcp
+```
+
+But if you want to bind the port of the container with the host machine on which the container is running, use -p option of `docker run` command.
+
+```cmd
+docker run -p <HOST_PORT>:<CONTAINER:PORT> IMAGE_NAME
+
+Example:
+docker run -p 80:80/udp myDocker
+```
 
 #### WORKDIR
+The WORKDIR command is used to define the working directory of a Docker container at any given time for any RUN, CMD, ENTRYPOINT, COPY and ADD instructions that follow it in the Dockerfile.
+
+```cmd
+WORKDIR /path/to/workdir
+
+Example:
+WORKDIR /c
+WORKDIR d
+WORKDIR e
+RUN pwd  // /c/d/e
+```
+
+#### LABEL
+The LABEL instruction adds metadata as key-value pairs to an image. Labels included in base or parent images (images in the FROM line) are inherited by your image.
+
+```cmd
+LABEL <key>=<value> <key>=<value> <key>=<value> ...
+
+Example:
+LABEL version="1.0"
+LABEL multi.label1="value1" \
+      multi.label2="value2" \
+      other="value3"
+```
+
+You can view an image’s labels using the `docker image inspect --format='' myimage` command. The output would be as below,
+
+```js
+{
+  "version": "1.0",
+  "multi.label1": "value1",
+  "multi.label2": "value2",
+  "other": "value3"
+}
+```
 
 #### MAINTAINER
 ### Docker Compose

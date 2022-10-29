@@ -40,7 +40,7 @@ You can download the PDF and Epub version of this repository from the latest run
 The docker desktop downloads are available for windows, mac and linux distributions.
 
 #### Windows
-It supports for Windows 10 64-bit: Pro, Enterprise, or Education (Build 15063 or later) editions. You need to follow the below steps for installation.
+It supports for Windows 10 64-bit: Home, Pro, Enterprise, or Education, version 1903 (Build 18362 or higher). You need to follow the below steps for installation.
 
 1. Download docker desktop for windows from https://docs.docker.com/docker-for-windows/install/
 2. Double-click `Docker Desktop Installer.exe` to run the installer.
